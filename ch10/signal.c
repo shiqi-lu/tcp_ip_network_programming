@@ -8,6 +8,7 @@ void timeout(int sig)
     if (sig == SIGALRM) {
         puts("Time out!");
     }
+    // 每隔2秒重复产生 SIGALRM 信号
     alarm(2);
 }
 
@@ -21,6 +22,7 @@ void keycontrol(int sig)
 int main()
 {
     int i;
+    // 注册 SIGALRM、SIGINT 信号及相应处理器
     signal(SIGALRM, timeout);
     signal(SIGINT, keycontrol);
     alarm(2);
